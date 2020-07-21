@@ -1,0 +1,22 @@
+{
+    "template": "https://github.com/NimVek/cookiecutter-python",
+    "commit": "f55a2231ad06356b7f613eedf78b1e7dec52bbd0",
+    "context": {
+        "cookiecutter": {
+            "author_name": "NimVek",
+            "author_email": "NimVek@users.noreply.github.com",
+            "project_name": "pyFugue",
+            "project_description": "A Mud client based on python.",
+            "package_name": "pyfugue",
+            "package_version": "0.1.0",
+            "repository_name": "python-pyfugue",
+            "repository_user": "NimVek",
+            "with_main": "on",
+            "do_github": "on",
+            "_copy_without_render": [
+                ".github/workflows/*"
+            ],
+            "_template": "https://github.com/NimVek/cookiecutter-python"
+        }
+    }
+}
