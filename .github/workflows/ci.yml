@@ -111,7 +111,7 @@ jobs:
           poetry run pytest --verbose --cov=src --cov-report=xml
 
       - name: Coverage
-        uses: codecov/codecov-action@v1.0.11
+        uses: codecov/codecov-action@v1.0.12
         with:
           env_vars: OS, PYTHON
 
