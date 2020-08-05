@@ -1,0 +1,1810 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A Mud client based on python.">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.5.3">
+    
+    
+      
+        <title>pyfugue.ui.urwid.session - pyFugue</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.947af8d5.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/all.css">
+    
+      <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.8.1/css/v4-shims.css">
+    
+      <link rel="stylesheet" href="../../css/mkapi-common.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pyfugueuiurwidsession" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="pyFugue" class="md-header-nav__button md-logo" aria-label="pyFugue">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            pyFugue
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              pyfugue.ui.urwid.session
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/NimVek/python-pyfugue/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="pyFugue" class="md-nav__button md-logo" aria-label="pyFugue">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    pyFugue
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/NimVek/python-pyfugue/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../CHANGELOG/" title="Changelog" class="md-nav__link">
+      Changelog
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Contributing
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Contributing" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Contributing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CONTRIBUTING/" title="Guide" class="md-nav__link">
+      Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../CODE_OF_CONDUCT/" title="Code of Conduct" class="md-nav__link">
+      Code of Conduct
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      API
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="API" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1">
+    
+    <label class="md-nav__link" for="nav-4-1">
+      pyfugue
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="pyfugue" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        pyfugue
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pyfugue/" title="pyfugue" class="md-nav__link">
+      pyfugue
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pyfugue.main/" title="pyfugue.main" class="md-nav__link">
+      pyfugue.main
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pyfugue.session/" title="pyfugue.session" class="md-nav__link">
+      pyfugue.session
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pyfugue.application/" title="pyfugue.application" class="md-nav__link">
+      pyfugue.application
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+    
+    <label class="md-nav__link" for="nav-4-2">
+      pyfugue.ui
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="pyfugue.ui" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        pyfugue.ui
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pyfugue.ui/" title="pyfugue.ui" class="md-nav__link">
+      pyfugue.ui
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" checked>
+    
+    <label class="md-nav__link" for="nav-4-3">
+      pyfugue.ui.urwid
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="pyfugue.ui.urwid" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        pyfugue.ui.urwid
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pyfugue.ui.urwid/" title="pyfugue.ui.urwid" class="md-nav__link">
+      pyfugue.ui.urwid
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        pyfugue.ui.urwid.session
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="pyfugue.ui.urwid.session" class="md-nav__link md-nav__link--active">
+      pyfugue.ui.urwid.session
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pyfugueuiurwidsessionurwiduisession" class="md-nav__link">
+    UrwidUISession
+  </a>
+  
+    <nav class="md-nav" aria-label="UrwidUISession">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#urwidwidgetwidgetmeta" class="md-nav__link">
+    WidgetMeta
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidwidgetwidgetselectable" class="md-nav__link">
+    selectable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidwidgetwidgetsizing" class="md-nav__link">
+    sizing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidwidgetwidgetpack" class="md-nav__link">
+    pack
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidwidgetwidgetrepr" class="md-nav__link">
+    repr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerwidgetcontainermixingetitem" class="md-nav__link">
+    getitem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerwidgetcontainermixinget_focus_path" class="md-nav__link">
+    get_focus_path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerwidgetcontainermixinset_focus_path" class="md-nav__link">
+    set_focus_path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerwidgetcontainermixinget_focus_widgets" class="md-nav__link">
+    get_focus_widgets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframeset_focus" class="md-nav__link">
+    set_focus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframeget_focus" class="md-nav__link">
+    get_focus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframeoptions" class="md-nav__link">
+    options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframeframe_top_bottom" class="md-nav__link">
+    frame_top_bottom
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframekeypress" class="md-nav__link">
+    keypress
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframemouse_event" class="md-nav__link">
+    mouse_event
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframeget_cursor_coords" class="md-nav__link">
+    get_cursor_coords
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframeiter" class="md-nav__link">
+    iter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframereversed" class="md-nav__link">
+    reversed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pyfugue.ui.urwid.controller/" title="pyfugue.ui.urwid.controller" class="md-nav__link">
+      pyfugue.ui.urwid.controller
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../pyfugue.ui.interface/" title="pyfugue.ui.interface" class="md-nav__link">
+      pyfugue.ui.interface
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      About
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="About" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        About
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../LICENSE/" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pyfugueuiurwidsessionurwiduisession" class="md-nav__link">
+    UrwidUISession
+  </a>
+  
+    <nav class="md-nav" aria-label="UrwidUISession">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#urwidwidgetwidgetmeta" class="md-nav__link">
+    WidgetMeta
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidwidgetwidgetselectable" class="md-nav__link">
+    selectable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidwidgetwidgetsizing" class="md-nav__link">
+    sizing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidwidgetwidgetpack" class="md-nav__link">
+    pack
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidwidgetwidgetrepr" class="md-nav__link">
+    repr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerwidgetcontainermixingetitem" class="md-nav__link">
+    getitem
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerwidgetcontainermixinget_focus_path" class="md-nav__link">
+    get_focus_path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerwidgetcontainermixinset_focus_path" class="md-nav__link">
+    set_focus_path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerwidgetcontainermixinget_focus_widgets" class="md-nav__link">
+    get_focus_widgets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframeset_focus" class="md-nav__link">
+    set_focus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframeget_focus" class="md-nav__link">
+    get_focus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframeoptions" class="md-nav__link">
+    options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframeframe_top_bottom" class="md-nav__link">
+    frame_top_bottom
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframekeypress" class="md-nav__link">
+    keypress
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframemouse_event" class="md-nav__link">
+    mouse_event
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframeget_cursor_coords" class="md-nav__link">
+    get_cursor_coords
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframeiter" class="md-nav__link">
+    iter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#urwidcontainerframereversed" class="md-nav__link">
+    reversed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/NimVek/python-pyfugue/edit/master/docs/api/pyfugue.ui.urwid.session.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <div class="mkapi-node" id="pyfugue.ui.urwid.session">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object module plain top">
+    <div class="mkapi-object-kind module top">module</div>
+    <h1 id="pyfugueuiurwidsession" class="mkapi-object-body module top"><span class="mkapi-object-prefix"><a href="../pyfugue.ui.urwid/#pyfugue.ui.urwid">pyfugue.ui.urwid</a>.</span><span class="mkapi-object-name">session</span></h1>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/pyfugue.ui.urwid.session/#pyfugue.ui.urwid.session" title="Source for pyfugue.ui.urwid.session">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Implementation of <a href="../pyfugue.ui.interface/#pyfugue.ui.interface.IUISession">IUISession</a>.</p></div>
+    </div>
+  <div class="mkapi-section classes">
+      <div class="mkapi-section-name classes">
+          <span class="mkapi-section-name-body classes">Classes</span> 
+        </div>
+      <div class="mkapi-section-body classes"><ul class="mkapi-items">
+<li class="class"><code class="mkapi-item-name"><a href="#pyfugue.ui.urwid.session.UrwidUISession">UrwidUISession</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Urwid bases UI Session.<a class="mkapi-src-link" href="../source/pyfugue.ui.urwid.session/#pyfugue.ui.urwid.session.UrwidUISession" title="Source for pyfugue.ui.urwid.session.UrwidUISession">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mkapi-node" id="pyfugue.ui.urwid.session.UrwidUISession">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object class code top">
+    <div class="mkapi-object-kind class top">class</div>
+    <h2 id="pyfugueuiurwidsessionurwiduisession" class="mkapi-object-body class top"><code class="mkapi-object-prefix"><a href="#pyfugue.ui.urwid.session">pyfugue.ui.urwid.session</a>.</code><code class="mkapi-object-name">UrwidUISession</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code></h2>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/pyfugue.ui.urwid.session/#pyfugue.ui.urwid.session.UrwidUISession" title="Source for pyfugue.ui.urwid.session.UrwidUISession">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section bases">
+      <div class="mkapi-section-name bases">
+          <span class="mkapi-section-name-body bases">Bases</span> 
+        </div>
+      <div class="mkapi-section-body bases">
+<span class="mkapi-base">urwid.container.Frame</span>
+
+<span class="mkapi-base">urwid.widget.Widget</span>
+
+<span class="mkapi-base">urwid.container.WidgetContainerMixin</span>
+</div>
+    </div>
+  <div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Urwid bases UI Session.</p></div>
+    </div>
+  <div class="mkapi-section attributes">
+      <div class="mkapi-section-name attributes">
+          <span class="mkapi-section-name-body attributes">Attributes</span> 
+        </div>
+      <div class="mkapi-section-body attributes"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">__input</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">__output</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">__status</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">_body</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">_footer</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">_header</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">body</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">focus_part</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">footer</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li class="readwrite-property"><code class="mkapi-item-name">get_focus</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Return an indicator which part of the frame is in focus<br>
+.. note:: included for backwards compatibility. You should rather use
+    the container property :attr:<code>.focus_position</code> to get this value.<br>
+:returns: one of 'header', 'footer' or 'body'.
+:rtype: str<span id="urwid.container.Frame.get_focus"></span><a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.get_focus" title="Source for urwid.container.Frame.get_focus">&lt;/&gt;</a></span></li>
+
+<li><code class="mkapi-item-name">header</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section classes">
+      <div class="mkapi-section-name classes">
+          <span class="mkapi-section-name-body classes">Classes</span> 
+        </div>
+      <div class="mkapi-section-body classes"><ul class="mkapi-items">
+<li class="class"><code class="mkapi-item-name"><a href="#urwid.widget.WidgetMeta">WidgetMeta</a></code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Bases: :class:<code>MetaSuper</code>, :class:<code>MetaSignals</code><a class="mkapi-src-link" href="../source/urwid.widget/#urwid.widget.WidgetMeta" title="Source for urwid.widget.WidgetMeta">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
+    </div>
+  <div class="mkapi-section methods">
+      <div class="mkapi-section-name methods">
+          <span class="mkapi-section-name-body methods">Methods</span> 
+        </div>
+      <div class="mkapi-section-body methods"><ul class="mkapi-items">
+<li class="method"><code class="mkapi-item-name"><a href="#urwid.container.WidgetContainerMixin.__getitem__">__getitem__</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">position</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Container short-cut for self.contents[position][0].base_widget
+which means "give me the child widget at position without any
+widget decorations".<a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.WidgetContainerMixin.__getitem__" title="Source for urwid.container.WidgetContainerMixin.__getitem__">&lt;/&gt;</a></span></li>
+
+<li class="generator"><code class="mkapi-item-name"><a href="#urwid.container.Frame.__iter__">__iter__</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Return an iterator over the positions in this Frame top to bottom.<a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.__iter__" title="Source for urwid.container.Frame.__iter__">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#urwid.widget.Widget.__repr__">__repr__</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">A friendly <strong>repr</strong> for widgets, designed to be extended
+by subclasses with _repr_words and _repr_attr methods.<a class="mkapi-src-link" href="../source/urwid.widget/#urwid.widget.Widget.__repr__" title="Source for urwid.widget.Widget.__repr__">&lt;/&gt;</a></span></li>
+
+<li class="generator"><code class="mkapi-item-name"><a href="#urwid.container.Frame.__reversed__">__reversed__</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Return an iterator over the positions in this Frame bottom to top.<a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.__reversed__" title="Source for urwid.container.Frame.__reversed__">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#urwid.container.Frame.frame_top_bottom">frame_top_bottom</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">size</code>, <code class="mkapi-object-signature">focus</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Calculate the number of rows for the header and footer.<a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.frame_top_bottom" title="Source for urwid.container.Frame.frame_top_bottom">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#urwid.container.Frame.get_cursor_coords">get_cursor_coords</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">size</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Return the cursor coordinates of the focus widget.<a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.get_cursor_coords" title="Source for urwid.container.Frame.get_cursor_coords">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#urwid.container.Frame.get_focus">get_focus</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Return an indicator which part of the frame is in focus<a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.get_focus" title="Source for urwid.container.Frame.get_focus">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#urwid.container.WidgetContainerMixin.get_focus_path">get_focus_path</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Return the .focus_position values starting from this container
+and proceeding along each child widget until reaching a leaf
+(non-container) widget.<a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.WidgetContainerMixin.get_focus_path" title="Source for urwid.container.WidgetContainerMixin.get_focus_path">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#urwid.container.WidgetContainerMixin.get_focus_widgets">get_focus_widgets</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Return the .focus values starting from this container
+and proceeding along each child widget until reaching a leaf
+(non-container) widget.<a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.WidgetContainerMixin.get_focus_widgets" title="Source for urwid.container.WidgetContainerMixin.get_focus_widgets">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#urwid.container.Frame.keypress">keypress</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">size</code>, <code class="mkapi-object-signature">key</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Pass keypress to widget in focus.<a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.keypress" title="Source for urwid.container.Frame.keypress">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#urwid.container.Frame.mouse_event">mouse_event</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">size</code>, <code class="mkapi-object-signature">event</code>, <code class="mkapi-object-signature">button</code>, <code class="mkapi-object-signature">col</code>, <code class="mkapi-object-signature">row</code>, <code class="mkapi-object-signature">focus</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Pass mouse event to appropriate part of frame.
+Focus may be changed on button 1 press.<a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.mouse_event" title="Source for urwid.container.Frame.mouse_event">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#urwid.container.Frame.options">options</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">There are currently no options for Frame contents.<a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.options" title="Source for urwid.container.Frame.options">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#urwid.widget.Widget.pack">pack</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">size</code>, <code class="mkapi-object-signature">focus</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">See :meth:<code>Widget.render</code> for parameter details.<a class="mkapi-src-link" href="../source/urwid.widget/#urwid.widget.Widget.pack" title="Source for urwid.widget.Widget.pack">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#urwid.widget.Widget.selectable">selectable</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">:returns: <code>True</code> if this is a widget that is designed to take the
+          focus, i.e. it contains something the user might want to
+          interact with, <code>False</code> otherwise,<a class="mkapi-src-link" href="../source/urwid.widget/#urwid.widget.Widget.selectable" title="Source for urwid.widget.Widget.selectable">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#urwid.container.Frame.set_focus">set_focus</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">part</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Determine which part of the frame is in focus.<a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.set_focus" title="Source for urwid.container.Frame.set_focus">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#urwid.container.WidgetContainerMixin.set_focus_path">set_focus_path</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">positions</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">Set the .focus_position property starting from this container
+widget and proceeding along newly focused child widgets.  Any
+failed assignment due do incompatible position types or invalid
+positions will raise an IndexError.<a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.WidgetContainerMixin.set_focus_path" title="Source for urwid.container.WidgetContainerMixin.set_focus_path">&lt;/&gt;</a></span></li>
+
+<li class="method"><code class="mkapi-item-name"><a href="#urwid.widget.Widget.sizing">sizing</a></code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description">:returns: A frozenset including one or more of <code>'box'</code>, <code>'flow'</code> and
+          <code>'fixed'</code>.  Default implementation returns the value of
+          :attr:<code>._sizing</code>, which for this class includes all three.<a class="mkapi-src-link" href="../source/urwid.widget/#urwid.widget.Widget.sizing" title="Source for urwid.widget.Widget.sizing">&lt;/&gt;</a></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+  <div class="mkapi-members">
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.widget.WidgetMeta">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object class code top">
+    <div class="mkapi-object-kind class top">class</div>
+    <h3 id="urwidwidgetwidgetmeta" class="mkapi-object-body class top"><code class="mkapi-object-prefix">urwid.widget.</code><code class="mkapi-object-name">WidgetMeta</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">name</code>, <code class="mkapi-object-signature">bases</code>, <code class="mkapi-object-signature">d</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.widget/#urwid.widget.WidgetMeta" title="Source for urwid.widget.WidgetMeta">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section bases">
+      <div class="mkapi-section-name bases">
+          <span class="mkapi-section-name-body bases">Bases</span> 
+        </div>
+      <div class="mkapi-section-body bases">
+<span class="mkapi-base">urwid.util.MetaSuper</span>
+
+<span class="mkapi-base">urwid.signals.MetaSignals</span>
+</div>
+    </div>
+  <div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Bases: :class:<code>MetaSuper</code>, :class:<code>MetaSignals</code></p>
+<p>Automatic caching of render and rows methods.</p>
+<p>Class variable <em>no_cache</em> is a list of names of methods to not cache
+automatically.  Valid method names for <em>no_cache</em> are <code>'render'</code> and
+<code>'rows'</code>.</p>
+<p>Class variable <em>ignore_focus</em> if defined and set to <code>True</code> indicates
+that the canvas this widget renders is not affected by the focus
+parameter, so it may be ignored when caching.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">name</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">bases</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">d</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.widget.Widget.selectable">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="urwidwidgetwidgetselectable" class="mkapi-object-body method"><code class="mkapi-object-name">selectable</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.widget/#urwid.widget.Widget.selectable" title="Source for urwid.widget.Widget.selectable">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>:returns: <code>True</code> if this is a widget that is designed to take the
+          focus, i.e. it contains something the user might want to
+          interact with, <code>False</code> otherwise,</p>
+<p>This default implementation returns :attr:<code>._selectable</code>.
+Subclasses may leave these is if the are not selectable,
+or if they are always selectable they may
+set the :attr:<code>_selectable</code> class variable to <code>True</code>.</p>
+<p>If this method returns <code>True</code> then the :meth:<code>.keypress</code> method
+must be implemented.</p>
+<p>Returning <code>False</code> does not guarantee that this widget will never be in
+focus, only that this widget will usually be skipped over when changing
+focus. It is still possible for non selectable widgets to have the focus
+(typically when there are no other selectable widgets visible).</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.widget.Widget.sizing">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="urwidwidgetwidgetsizing" class="mkapi-object-body method"><code class="mkapi-object-name">sizing</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.widget/#urwid.widget.Widget.sizing" title="Source for urwid.widget.Widget.sizing">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>:returns: A frozenset including one or more of <code>'box'</code>, <code>'flow'</code> and
+          <code>'fixed'</code>.  Default implementation returns the value of
+          :attr:<code>._sizing</code>, which for this class includes all three.</p>
+<p>The sizing modes returned indicate the modes that may be
+supported by this widget, but is not sufficient to know
+that using that sizing mode will work.  Subclasses should
+make an effort to remove sizing modes they know will not
+work given the state of the widget, but many do not yet
+do this.</p>
+<p>If a sizing mode is missing from the set then the widget
+should fail when used in that mode.</p>
+<p>If <code>'flow'</code> is among the values returned then the other
+methods in this widget must be able to accept a
+single-element tuple (<em>maxcol</em>,) to their <code>size</code>
+parameter, and the :meth:<code>rows</code> method must be defined.</p>
+<p>If <code>'box'</code> is among the values returned then the other
+methods must be able to accept a two-element tuple
+(<em>maxcol</em>, <em>maxrow</em>) to their size parameter.</p>
+<p>If <code>'fixed'</code> is among the values returned then the other
+methods must be able to accept an empty tuple () to
+their size parameter, and the :meth:<code>pack</code> method must
+be defined.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.widget.Widget.pack">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="urwidwidgetwidgetpack" class="mkapi-object-body method"><code class="mkapi-object-name">pack</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">size</code>, <code class="mkapi-object-signature">focus=False</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.widget/#urwid.widget.Widget.pack" title="Source for urwid.widget.Widget.pack">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>See :meth:<code>Widget.render</code> for parameter details.</p>
+<p>:returns: A "packed" size (<em>maxcol</em>, <em>maxrow</em>) for this widget</p>
+<p>Calculate and return a minimum
+size where all content could still be displayed. Fixed widgets must
+implement this method and return their size when <code>()</code> is passed as the
+<em>size</em> parameter.</p>
+<p>This default implementation returns the <em>size</em> passed, or the <em>maxcol</em>
+passed and the value of :meth:<code>rows</code> as the <em>maxrow</em> when (<em>maxcol</em>,)
+is passed as the <em>size</em> parameter.</p>
+<p>.. note::</p>
+<p>This is a new method that hasn't been fully implemented across the
+   standard widget types. In particular it has not yet been
+   implemented for container widgets.</p>
+<p>:class:<code>Text</code> widgets have implemented this method.
+You can use :meth:<code>Text.pack</code> to calculate the minimum
+columns and rows required to display a text widget without wrapping,
+or call it iteratively to calculate the minimum number of columns
+required to display the text wrapped into a target number of rows.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">size</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">focus</code>
+<span class="mkapi-item-type">(optional)</span>
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.widget.Widget.__repr__">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="urwidwidgetwidgetrepr" class="mkapi-object-body method"><code class="mkapi-object-name">__repr__</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.widget/#urwid.widget.Widget.__repr__" title="Source for urwid.widget.Widget.__repr__">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>A friendly <strong>repr</strong> for widgets, designed to be extended
+by subclasses with _repr_words and _repr_attr methods.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.container.WidgetContainerMixin.__getitem__">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="urwidcontainerwidgetcontainermixingetitem" class="mkapi-object-body method"><code class="mkapi-object-name">__getitem__</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">position</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.WidgetContainerMixin.__getitem__" title="Source for urwid.container.WidgetContainerMixin.__getitem__">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Container short-cut for self.contents[position][0].base_widget
+which means "give me the child widget at position without any
+widget decorations".</p>
+<p>This allows for concise traversal of nested container widgets
+such as:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">my_widget</span><span class="o">[</span><span class="n">position0</span><span class="o">][</span><span class="n">position1</span><span class="o">][</span><span class="n">position2</span><span class="o">]</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
+</code></pre></div></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">position</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.container.WidgetContainerMixin.get_focus_path">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="urwidcontainerwidgetcontainermixinget_focus_path" class="mkapi-object-body method"><code class="mkapi-object-name">get_focus_path</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.WidgetContainerMixin.get_focus_path" title="Source for urwid.container.WidgetContainerMixin.get_focus_path">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Return the .focus_position values starting from this container
+and proceeding along each child widget until reaching a leaf
+(non-container) widget.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.container.WidgetContainerMixin.set_focus_path">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="urwidcontainerwidgetcontainermixinset_focus_path" class="mkapi-object-body method"><code class="mkapi-object-name">set_focus_path</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">positions</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.WidgetContainerMixin.set_focus_path" title="Source for urwid.container.WidgetContainerMixin.set_focus_path">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Set the .focus_position property starting from this container
+widget and proceeding along newly focused child widgets.  Any
+failed assignment due do incompatible position types or invalid
+positions will raise an IndexError.</p>
+<p>This method may be used to restore a particular widget to the
+focus by passing in the value returned from an earlier call to
+get_focus_path().</p>
+<p>positions -- sequence of positions</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">positions</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.container.WidgetContainerMixin.get_focus_widgets">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="urwidcontainerwidgetcontainermixinget_focus_widgets" class="mkapi-object-body method"><code class="mkapi-object-name">get_focus_widgets</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.WidgetContainerMixin.get_focus_widgets" title="Source for urwid.container.WidgetContainerMixin.get_focus_widgets">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Return the .focus values starting from this container
+and proceeding along each child widget until reaching a leaf
+(non-container) widget.</p>
+<p>Note that the list does not contain the topmost container widget
+(i.e., on which this method is called), but does include the
+lowest leaf widget.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.container.Frame.set_focus">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="urwidcontainerframeset_focus" class="mkapi-object-body method"><code class="mkapi-object-name">set_focus</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">part</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.set_focus" title="Source for urwid.container.Frame.set_focus">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Determine which part of the frame is in focus.</p>
+<p>.. note:: included for backwards compatibility. You should rather use
+    the container property :attr:<code>.focus_position</code> to set this value.</p>
+<p>:param part: 'header', 'footer' or 'body'
+:type part: str</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">part</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.container.Frame.get_focus">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="urwidcontainerframeget_focus" class="mkapi-object-body method"><code class="mkapi-object-name">get_focus</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.get_focus" title="Source for urwid.container.Frame.get_focus">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Return an indicator which part of the frame is in focus</p>
+<p>.. note:: included for backwards compatibility. You should rather use
+    the container property :attr:<code>.focus_position</code> to get this value.</p>
+<p>:returns: one of 'header', 'footer' or 'body'.
+:rtype: str</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.container.Frame.options">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="urwidcontainerframeoptions" class="mkapi-object-body method"><code class="mkapi-object-name">options</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.options" title="Source for urwid.container.Frame.options">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>There are currently no options for Frame contents.</p>
+<p>Return None as a placeholder for future options.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.container.Frame.frame_top_bottom">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="urwidcontainerframeframe_top_bottom" class="mkapi-object-body method"><code class="mkapi-object-name">frame_top_bottom</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">size</code>, <code class="mkapi-object-signature">focus</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.frame_top_bottom" title="Source for urwid.container.Frame.frame_top_bottom">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Calculate the number of rows for the header and footer.</p>
+<p>:param size: See :meth:<code>Widget.render</code> for details
+:type size: widget size
+:param focus: <code>True</code> if this widget is in focus
+:type focus: bool
+:returns: <code>(head rows, foot rows),(orig head, orig foot)</code>
+          orig head/foot are from rows() calls.
+:rtype: (int, int), (int, int)</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">size</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">focus</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.container.Frame.keypress">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="urwidcontainerframekeypress" class="mkapi-object-body method"><code class="mkapi-object-name">keypress</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">size</code>, <code class="mkapi-object-signature">key</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.keypress" title="Source for urwid.container.Frame.keypress">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Pass keypress to widget in focus.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">size</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">key</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.container.Frame.mouse_event">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="urwidcontainerframemouse_event" class="mkapi-object-body method"><code class="mkapi-object-name">mouse_event</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">size</code>, <code class="mkapi-object-signature">event</code>, <code class="mkapi-object-signature">button</code>, <code class="mkapi-object-signature">col</code>, <code class="mkapi-object-signature">row</code>, <code class="mkapi-object-signature">focus</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.mouse_event" title="Source for urwid.container.Frame.mouse_event">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Pass mouse event to appropriate part of frame.
+Focus may be changed on button 1 press.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">size</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">event</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">button</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">col</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">row</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+<li><code class="mkapi-item-name">focus</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.container.Frame.get_cursor_coords">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object method code">
+    <div class="mkapi-object-kind method">method</div>
+    <h3 id="urwidcontainerframeget_cursor_coords" class="mkapi-object-body method"><code class="mkapi-object-name">get_cursor_coords</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-signature">size</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.get_cursor_coords" title="Source for urwid.container.Frame.get_cursor_coords">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Return the cursor coordinates of the focus widget.</p></div>
+    </div>
+  <div class="mkapi-section parameters">
+      <div class="mkapi-section-name parameters">
+          <span class="mkapi-section-name-body parameters">Parameters</span> 
+        </div>
+      <div class="mkapi-section-body parameters"><ul class="mkapi-items">
+<li><code class="mkapi-item-name">size</code>
+
+<span class="mkapi-item-dash">&mdash;</span> <span class="mkapi-item-description"></span></li>
+
+
+</ul></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.container.Frame.__iter__">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object generator code">
+    <div class="mkapi-object-kind generator">generator</div>
+    <h3 id="urwidcontainerframeiter" class="mkapi-object-body generator"><code class="mkapi-object-name">__iter__</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.__iter__" title="Source for urwid.container.Frame.__iter__">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Return an iterator over the positions in this Frame top to bottom.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+    <div class="mkapi-member">
+      <div class="mkapi-node" id="urwid.container.Frame.__reversed__">
+<div class='mkapi-object-container'>
+  <div class="mkapi-object generator code">
+    <div class="mkapi-object-kind generator">generator</div>
+    <h3 id="urwidcontainerframereversed" class="mkapi-object-body generator"><code class="mkapi-object-name">__reversed__</code><code class="mkapi-object-parenthesis">(</code><code class="mkapi-object-parenthesis">)</code></h3>
+  </div>
+  <div class="mkapi-src-link">
+    <a class="mkapi-src-link" href="../source/urwid.container/#urwid.container.Frame.__reversed__" title="Source for urwid.container.Frame.__reversed__">&lt;/&gt;</a>
+  </div>
+</div>
+<div class="mkapi-docstring">
+<div class="mkapi-section">
+      <div class="mkapi-section-body"><p>Return an iterator over the positions in this Frame bottom to top.</p></div>
+    </div>
+  </div>
+
+</div>
+    </div>
+  
+  </div>
+
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../pyfugue.ui.urwid/" title="pyfugue.ui.urwid" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                pyfugue.ui.urwid
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../pyfugue.ui.urwid.controller/" title="pyfugue.ui.urwid.controller" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                pyfugue.ui.urwid.controller
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.c3dc8c49.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f9edbbd5.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.8e2cddea.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../js/mkapi.js"></script>
+      
+    
+  </body>
+</html>
