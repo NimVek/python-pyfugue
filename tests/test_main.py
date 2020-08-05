@@ -1,14 +1,7 @@
 """Tests for `pyfugue` package."""
 import pytest
 
-from pyfugue import main
-
-
-def test_command_line_interface(capsys):
-    """Test the CLI."""
-    main.main(args=[])
-    captured = capsys.readouterr()
-    assert "pyfugue.main.main" in captured.out
+from pyfugue import main  # noqa: E0611
 
 
 @pytest.mark.parametrize(
