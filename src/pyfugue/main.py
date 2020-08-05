@@ -37,9 +37,9 @@ def main(args: Optional[List[str]] = None) -> int:
     )
     parser.add_argument("_", nargs="*")
 
-    parsed = parser.parse_args(args=args)
+    parser.parse_args(args=args)
 
-    print(f"Arguments: {parsed._}")
-    print(f"Replace this message by putting your code into {__name__}.main")
+    app = pyfugue.Application()
+    app.start()
 
     return 0

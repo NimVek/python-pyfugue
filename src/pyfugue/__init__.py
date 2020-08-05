@@ -9,3 +9,4 @@ from .__about__ import (
     __uri__,
     __version__,
 )
+from .application import Application
