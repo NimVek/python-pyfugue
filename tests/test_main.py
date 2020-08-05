@@ -1,7 +1,7 @@
 """Tests for `pyfugue` package."""
 import pytest
 
-from pyfugue import main
+from pyfugue import main  # noqa: E0611
 
 
 @pytest.mark.parametrize(
