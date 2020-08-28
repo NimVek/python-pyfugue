@@ -1,27 +1,34 @@
 """Messaging System."""
 
+import abc
+
 from functools import total_ordering
 from typing import Any, Callable, Dict, Hashable, Optional, Set
 
 from sortedcontainers import SortedList
 
 
-__all__ = ["Message", "Publisher", "publish", "subscribe"]
+__all__ = [
+    "IMessage",
+    "SimpleMessage",
+    "ContentMessage",
+    "Publisher",
+    "publish",
+    "subscribe",
+]
 
 
-class Message:
-    """Base Message Class."""
+class IMessage(abc.ABC):
+    """Interface Message Class."""
 
-    def __init__(self, topic: Hashable, content: Optional[Any] = None) -> None:
-        """Tests if other Entry is equal to this.
-
-        Args:
-            topic: topic of the message
-            content: content of the message
-        """
-        self.topic = topic
-        self.content = content
+    def __init__(self) -> None:
+        """Create Interface of Message."""
         self.__discarded: bool = False
+
+    @property
+    @abc.abstractmethod
+    def topic(self) -> Hashable:
+        """Return topic of the message."""
 
     def discard(self):
         """Mark the message for discarding."""
@@ -37,7 +44,43 @@ class Message:
         return self.__discarded
 
 
-Subscriber = Callable[[Message], None]
+class SimpleMessage(IMessage):
+    """Simple Message."""
+
+    def __init__(self, topic: Hashable) -> None:
+        """Construct a simple contentless message.
+
+        Args:
+            topic: topic of the message
+        """
+        super().__init__()
+        self.__topic = topic
+
+    @property
+    def topic(self):
+        """Return topic of the message.
+
+        Returns:
+            Topic of the Message
+        """
+        return self.__topic
+
+
+class ContentMessage(SimpleMessage):
+    """Base Message Class."""
+
+    def __init__(self, topic: Hashable, content: Any) -> None:
+        """Create message with content.
+
+        Args:
+            topic: topic of the message
+            content: content of the message
+        """
+        super().__init__(topic)
+        self.content = content
+
+
+Subscriber = Callable[[IMessage], None]
 
 
 class Publisher:
@@ -121,7 +164,7 @@ class Publisher:
         result.update(self.__subscribers.get(topic, set()))
         return result
 
-    def publish(self, message: Message, parent: bool = True) -> None:
+    def publish(self, message: IMessage, parent: bool = True) -> None:
         """Publish a message for a topic.
 
         Args:

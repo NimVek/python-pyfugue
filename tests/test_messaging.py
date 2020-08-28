@@ -1,13 +1,19 @@
 import pytest
 
-from pyfugue.contrib.messaging import Message, Publisher, publish, subscribe
+from pyfugue.contrib.messaging import (
+    ContentMessage,
+    Publisher,
+    SimpleMessage,
+    publish,
+    subscribe,
+)
 
 
 @pytest.mark.parametrize("subscriber", [lambda message: print(message.content)])
 def test_register(subscriber, capsys):
     publisher = Publisher(None)
     publisher.subscribe("test", subscriber)
-    publisher.publish(Message("test", "local"))
+    publisher.publish(ContentMessage("test", "local"))
 
     captured = capsys.readouterr()
 
@@ -20,7 +26,7 @@ def test_register(subscriber, capsys):
 def test_topic(topic, output, capsys):
     publisher = Publisher(None)
     publisher.subscribe("subscribed", lambda message: print(message.topic))
-    publisher.publish(Message(topic, topic))
+    publisher.publish(SimpleMessage(topic))
 
     captured = capsys.readouterr()
 
@@ -50,7 +56,7 @@ def test_order(subscriber, output, capsys):
     publisher = Publisher(None)
     for i in subscriber:
         publisher.subscribe("test", i[0], i[1])
-    publisher.publish(Message("test", "order"))
+    publisher.publish(SimpleMessage("test"))
 
     captured = capsys.readouterr()
 
@@ -65,7 +71,7 @@ def test_discard(capsys):
     publisher.subscribe("test", lambda x: print("first"), 100)
     publisher.subscribe("test", discard, 50)
     publisher.subscribe("test", lambda x: print("second"))
-    publisher.publish(Message("test", "discard"))
+    publisher.publish(SimpleMessage("test"))
 
     captured = capsys.readouterr()
 
@@ -75,7 +81,7 @@ def test_discard(capsys):
 @pytest.mark.parametrize("subscriber", [lambda message: print(message.content)])
 def test_register_global(subscriber, capsys):
     subscribe("test", subscriber)
-    publish(Message("test", "global"))
+    publish(ContentMessage("test", "global"))
 
     captured = capsys.readouterr()
 
@@ -90,7 +96,7 @@ def test_propagate(topic, propagate, output, capsys):
     subscribe(topic, lambda x: print("global"), 50)
     publisher = Publisher()
     publisher.subscribe(topic, lambda x: print("local"), 25)
-    publisher.publish(Message(topic), propagate)
+    publisher.publish(SimpleMessage(topic), propagate)
 
     captured = capsys.readouterr()
 
@@ -104,11 +110,11 @@ def test_complex(capsys):
     p2 = Publisher()
     p2.subscribe("complex", lambda x: print("complex_p2"), 20)
 
-    p1.publish(Message("complex", "complex"))
+    p1.publish(SimpleMessage("complex"))
     print(":next:")
-    p2.publish(Message("complex", "complex"))
+    p2.publish(SimpleMessage("complex"))
     print(":next:")
-    p1.publish(Message("complex", "complex"), False)
+    p1.publish(SimpleMessage("complex"), False)
 
     captured = capsys.readouterr()
 
